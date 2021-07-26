@@ -8,7 +8,6 @@ require('dotenv').config();
 
 //Plugin dotenv pour le masquage de données
 const TOKEN = process.env.TOKEN;
-console.log(process.env.TOKEN);
 
 module.exports = (req, res, next) => {
   

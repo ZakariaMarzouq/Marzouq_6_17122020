@@ -24,7 +24,7 @@ const MDP = process.env.MDP;
 const LINK = process.env.LINK
 
 //Déclaration de la mise en connection à la base de donnée mongooseDB :
-mongoose.connect(`mongodb+srv://${process.env.USER}:${MDP}@${LINK}`,
+mongoose.connect(`mongodb+srv://${USER}:${MDP}@${LINK}`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))

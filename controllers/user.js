@@ -1,6 +1,6 @@
 /*LOGIQUE METIER POUR CE QUI CONCERNE L'AUTHENTIFICATION DES USERS */
 
-const User = require('../models/user'); //Importation du modèles Sauce 
+const User = require('../models/user'); //Importation du modèles user 
 const bcrypt = require('bcrypt'); //Importation du package de cryptage des mots de passe
 const jwt = require('jsonwebtoken'); //Importation du package qui permet de créer et de vérifier les tokens d'authentification
 require('dotenv').config(); //Plugin dotenv (masquage des données de connexion
@@ -56,78 +56,3 @@ exports.login = (req, res, next) => {
   })
   .catch(error => res.status(500).json({ error }));
 };
-
-
-
-
-
-/* 
-
-**************CONGIF 1 (faite avec JILAN)
-exports.signup = (req, res, next) => {
-  const email = req.body.email;
-  const password = req.body.password;
-  console.log(req)
-  console.log(email)
-  console.log(password)
-  if (!email || !password) {
-    res.status(400).send('Merci de fournir un email et un mot de passe ! ')
-  }
-  bcrypt.hash(req.body.password, 10)
-    .then(hash => {
-      const user = new User({
-        email: req.body.email,
-        password: hash
-      });
-      user.save()
-        .then(() => res.status(201).json({message:'Utilisateur Créé !'}))
-        .catch(error => res.status(400).json({error}));
-    })
-    .catch(error => res.status(500).json({error}));
-};
-
-
-
-**************CONGIF 2
-//const sha256 = require("crypto-js/sha256");
-//console.log(sha256);
-
-const regExEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const regExMdp = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.{6,})/;
-
-//Fonction permettant la création d'un nouveau compte utilisateur :
-exports.signup = (req, res, next) => {
-  const email = req.body.email;
-  const password = req.body.password;
-
-  if (!regExEmail.test(email) || !regExMdp.test(password)) {
-    res
-      .status(400)
-      .send(
-         "Merci de fournir une adresse email valide et un mot de passe contenant une Lettre majuscule, une minuscule et au moins 1 chiffre (6 caractères min) !"
-      );
-  }; 
-  
-  
-  -------------------------------------------------
-  **************CONGIF 3
-  exports.signup = (req, res, next) => {
-  // Password is not acceptable
-  if (!/(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.{6,})/.test(req.body.password)) {   // Test password strength
-    return res.status(401).json({ error: 'Le mot de passe doit contenir une lettre majuscule, une minuscule et au moins 1 chiffre (6 caractères min)' });
-  } else {
-    // Password is acceptable, hash it
-    bcrypt.hash(req.body.password, 10)
-      .then(hash => {
-        const user = new User({
-          email: req.body.email,
-          password: hash
-        })
-        user.save()
-          .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
-          .catch(error => res.status(400).json({ error }));
-      })
-      .catch(error => res.status(500).json({ error }));
-  }
-};
-  */

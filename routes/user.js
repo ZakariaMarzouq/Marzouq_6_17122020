@@ -1,7 +1,7 @@
 /*LOGIQUE ROUTE POUR CE QUI CONCERNE L'AUTHENTIFICATION DES USERS */
 
 const express = require('express');  //Ajout du frameWork "express":
-const router = express.Router(); //Création d'un router Express qui contient toutes les routes des requêtes "Sauces"
+const router = express.Router(); //Création d'un router Express qui contient toutes les routes des requêtes "users"
 const userCtrl = require('../controllers/user');
 const verifyPassword = require('../middleware/verif-password');
 
