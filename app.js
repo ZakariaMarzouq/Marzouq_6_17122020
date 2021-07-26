@@ -18,7 +18,7 @@ require('dotenv').config(); //Plugin dotenv (masquage des données de connextion
 /***********************************************************************************/
 const app = express(); //UTILISATION D'EXPRESS
 
-//Connexion à MongoBD et masquage d'ID, MPD, ADRESSE avec DOTENV
+//Connexion à MongoBD et masquage d'USER, MPD, LINK avec DOTENV
 const USER = process.env.USER;
 const MDP = process.env.MDP;
 const LINK = process.env.LINK

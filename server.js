@@ -1,4 +1,3 @@
-// Ecoute des requetes http et réponse
 const http = require('http'); 
 const app = require('./app');
 

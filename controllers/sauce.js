@@ -43,7 +43,6 @@ exports.modifySauce = (req, res, next) => {
     imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   } : {...req.body};
     const sauce = new Sauce({
-      //_id: req.params.id,
       ...sauceObjet
     })
   Sauce.updateOne({_id: req.params.id}, {...sauceObjet, _id:req.params.id})
@@ -112,7 +111,7 @@ exports.likeSauce = (req, res, next) => {
         .catch((error) => { res.status(400).json({ error: error }); });
       break;
 
-    //Si le user a cliqué sur dislike, on met à jour le produit sauce en incrémentant les dislikes de 1 et en intégrand l'id du user dans le tableau usersDisliked
+    //Si le user a cliqué sur dislike, on met à jour le produit sauce en incrémentant les dislikes de 1 et en intégrant l'id du user dans le tableau usersDisliked
     case -1:
       console.log("Je n'aime pas cette sauce !");
       Sauce.updateOne({ _id: req.params.id }, {
@@ -126,4 +125,4 @@ exports.likeSauce = (req, res, next) => {
     default:
       console.error('mauvaise requête');
   }
-}
+};
